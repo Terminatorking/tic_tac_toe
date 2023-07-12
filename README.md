@@ -1,16 +1,7 @@
 # tictactoe
 
-A new Flutter project.
+بازی دوز با فلاتر
 
-## Getting Started
+a tictactoe game flutter app
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![1](https://github.com/Terminatorking/tic_tac_toe/assets/107791627/3a131312-1088-43e2-ab81-17c05e85b69d)
