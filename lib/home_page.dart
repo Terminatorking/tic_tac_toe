@@ -12,9 +12,11 @@ class _HomePageState extends State<HomePage> {
   int winingsOfOPlayer = 0;
   bool isTurnO = true;
   List<String> xOrOList = ["", "", "", "", "", "", "", "", ""];
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -81,10 +83,12 @@ class _HomePageState extends State<HomePage> {
                       setState(
                         () {
                           isTurnO = !isTurnO;
-                          if (isTurnO) {
-                            xOrOList[index] = "O";
-                          } else {
-                            xOrOList[index] = "X";
+                          if (xOrOList[index] == "") {
+                            if (isTurnO) {
+                              xOrOList[index] = "O";
+                            } else {
+                              xOrOList[index] = "X";
+                            }
                           }
                         },
                       );
@@ -110,11 +114,32 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-            TextButton(onPressed: (){}, child: Text("")),
+            TextButton(
+              onPressed: () {
+                setState(
+                  () {
+                    for (var i = 0; i < xOrOList.length; i++) {
+                      xOrOList[i] = "";
+                    }
+                  },
+                );
+              },
+              child: const Text(
+                "Reset",
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                ),
+              ),
+            ),
             const Spacer(),
             Text(
               isTurnO ? "Turn O" : "Turn X",
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
             const SizedBox(
               height: 30,
