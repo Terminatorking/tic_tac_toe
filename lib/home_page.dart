@@ -10,6 +10,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int winingsOfXPlayer = 0;
   int winingsOfOPlayer = 0;
+  bool isTurnO = true;
+  List<String> xOrOList = ["", "", "", "", "", "", "", "", ""];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -74,14 +76,49 @@ class _HomePageState extends State<HomePage> {
                   crossAxisCount: 3,
                 ),
                 itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
+                  return GestureDetector(
+                    onTap: () {
+                      setState(
+                        () {
+                          isTurnO = !isTurnO;
+                          if (isTurnO) {
+                            xOrOList[index] = "O";
+                          } else {
+                            xOrOList[index] = "X";
+                          }
+                        },
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                      ),
+                      child: Center(
+                        child: Text(
+                          xOrOList[index],
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: xOrOList[index] == "O"
+                                ? Colors.redAccent
+                                : Colors.greenAccent,
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 },
               ),
-            )
+            ),
+            TextButton(onPressed: (){}, child: Text("")),
+            const Spacer(),
+            Text(
+              isTurnO ? "Turn O" : "Turn X",
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
           ],
         ),
       ),
