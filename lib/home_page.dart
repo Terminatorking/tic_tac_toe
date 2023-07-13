@@ -12,7 +12,7 @@ class _HomePageState extends State<HomePage> {
   int winingsOfOPlayer = 0;
   bool isTurnO = true;
   List<String> xOrOList = ["", "", "", "", "", "", "", "", ""];
-
+  bool isFinishing = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -82,16 +82,24 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       setState(
                         () {
-                          isTurnO = !isTurnO;
-                          if (xOrOList[index] == "") {
-                            if (isTurnO) {
-                              xOrOList[index] = "O";
-                            } else {
-                              xOrOList[index] = "X";
+                          if (!isFinishing) {
+                            if (xOrOList[index] == "") {
+                              isTurnO = !isTurnO;
+                            }
+
+                            if (xOrOList[index] == "") {
+                              if (!isTurnO) {
+                                xOrOList[index] = "O";
+                              } else {
+                                xOrOList[index] = "X";
+                              }
                             }
                           }
                         },
                       );
+                      if (!isFinishing) {
+                        checkWinner(xOrOList);
+                      }
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -121,6 +129,7 @@ class _HomePageState extends State<HomePage> {
                     for (var i = 0; i < xOrOList.length; i++) {
                       xOrOList[i] = "";
                     }
+                    isFinishing = false;
                   },
                 );
               },
@@ -148,5 +157,144 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  void checkWinner(List<String> list) {
+    if (list[0] == list[1] && list[0] == list[2] && list[0] != "") {
+      if (list[0] == "X") {
+        setState(
+          () {
+            winingsOfXPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      } else {
+        setState(
+          () {
+            winingsOfOPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      }
+    }
+    if (list[3] == list[4] && list[3] == list[5] && list[3] != "") {
+      if (list[3] == "X") {
+        setState(
+          () {
+            winingsOfXPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      } else {
+        setState(
+          () {
+            winingsOfOPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      }
+    }
+    if (list[6] == list[7] && list[6] == list[8] && list[6] != "") {
+      if (list[6] == "X") {
+        setState(
+          () {
+            winingsOfXPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      } else {
+        setState(
+          () {
+            winingsOfOPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      }
+    }
+    if (list[0] == list[3] && list[0] == list[6] && list[0] != "") {
+      if (list[0] == "X") {
+        setState(
+          () {
+            winingsOfXPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      } else {
+        setState(
+          () {
+            winingsOfOPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      }
+    }
+    if (list[1] == list[4] && list[1] == list[7] && list[1] != "") {
+      if (list[1] == "X") {
+        setState(
+          () {
+            winingsOfXPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      } else {
+        setState(
+          () {
+            winingsOfOPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      }
+    }
+    if (list[2] == list[5] && list[2] == list[8] && list[2] != "") {
+      if (list[2] == "X") {
+        setState(
+          () {
+            winingsOfXPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      } else {
+        setState(
+          () {
+            winingsOfOPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      }
+    }
+    if (list[0] == list[4] && list[0] == list[8] && list[0] != "") {
+      if (list[0] == "X") {
+        setState(
+          () {
+            winingsOfXPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      } else {
+        setState(
+          () {
+            winingsOfOPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      }
+    }
+    if (list[2] == list[4] && list[2] == list[6] && list[2] != "") {
+      if (list[2] == "X") {
+        setState(
+          () {
+            winingsOfXPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      } else {
+        setState(
+          () {
+            winingsOfOPlayer += 1;
+            isFinishing = true;
+          },
+        );
+      }
+    }
   }
 }
