@@ -12,6 +12,7 @@ class _HomePageState extends State<HomePage> {
   int winingsOfOPlayer = 0;
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -61,6 +62,25 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ],
+            ),
+            Container(
+              margin: const EdgeInsets.all(20),
+              width: size.width,
+              height: size.height / 1.9,
+              child: GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 9,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                ),
+                itemBuilder: (context, index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                    ),
+                  );
+                },
+              ),
             )
           ],
         ),
